@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Main-Class: org.example.Main
+Class-Path: javax.persistence-api-2.2.jar commons-pool2-2.8.1.jar jaxb-r
+ untime-2.3.1.jar jakarta.validation-api-2.0.2.jar jaxb-api-2.3.1.jar sp
+ ring-orm-5.3.20.jar spring-jdbc-5.3.20.jar spring-webmvc-5.3.20.jar Fas
+ tInfoset-1.2.15.jar hibernate-validator-6.1.6.Final.jar javax.activatio
+ n-api-1.2.0.jar spring-beans-5.3.20.jar jandex-2.4.2.Final.jar hibernat
+ e-java8-5.6.14.Final.jar protobuf-java-3.11.4.jar classmate-1.5.1.jar c
+ ommons-dbcp2-2.8.0.jar byte-buddy-1.12.18.jar spring-expression-5.3.20.
+ jar spring-context-5.3.20.jar txw2-2.3.1.jar stax-ex-1.8.jar antlr-2.7.
+ 7.jar spring-aop-5.3.20.jar hibernate-core-5.6.14.Final.jar jboss-loggi
+ ng-3.4.3.Final.jar spring-jcl-5.3.20.jar spring-web-5.3.20.jar commons-
+ logging-1.2.jar istack-commons-runtime-3.0.7.jar spring-core-5.3.20.jar
+  spring-tx-5.3.20.jar hibernate-commons-annotations-5.1.2.Final.jar jbo
+ ss-transaction-api_1.2_spec-1.1.1.Final.jar mysql-connector-java-8.0.22
+ .jar
+
