@@ -41,19 +41,11 @@ public class StrategyImpl implements Strategy {
 
     private void queryStrategy(String line) {
         if (line.contains("best_bid")) {
-            bestBid = bookmap.getBids().stream()
-                    .sorted(Comparator.comparing(Values::getPrice)
-                            .thenComparing(Values::getQuantity)
-                            .reversed())
-                    .findFirst()
-                    .orElseThrow(() -> new StrategyProcessingExceeption("Can't get best bid!"));
+            findBestAsk();
+            findBestBid();
             builder.append(bestBid.getPrice() + "," + bestBid.getQuantity() + "\n");
         } else if (line.contains("best_ask")) {
-            bestAsk = bookmap.getBids().stream()
-                    .sorted(Comparator.comparing(Values::getPrice)
-                            .thenComparing(Values::getQuantity))
-                    .findFirst()
-                    .orElseThrow(() -> new StrategyProcessingExceeption("Can't get best ask!"));
+            findBestAsk();
             builder.append(bestAsk.getPrice() + "," + bestAsk.getQuantity() + "\n");
         } else if (line.contains("size")) {
             int price = Integer.parseInt(line.substring(7));
@@ -85,5 +77,24 @@ public class StrategyImpl implements Strategy {
         } else {
             bookmap.getBids().add(values);
         }
+    }
+
+    private void findBestAsk() {
+        bestAsk = bookmap.getAsks().stream()
+                .filter(e -> e.getQuantity() > 0)
+                .sorted(Comparator.comparing(Values::getPrice)
+                        .thenComparing(Values::getQuantity))
+                .findFirst()
+                .orElseThrow(() -> new StrategyProcessingExceeption("Can't get best ask!"));
+    }
+
+    private void findBestBid() {
+        bestBid = bookmap.getBids().stream()
+                .filter(e -> e.getQuantity() > 0 && e.getQuantity() < bestAsk.getQuantity())
+                .sorted(Comparator.comparing(Values::getPrice)
+                        .thenComparing(Values::getQuantity)
+                        .reversed())
+                .findFirst()
+                .orElseThrow(() -> new StrategyProcessingExceeption("Can't get best bid!"));
     }
 }
